@@ -1,24 +1,24 @@
 <?php
 class PageController extends AbstractController {
     public function home(){
-        require "templates/home.phtml";
+        $this->render([], 'home');
     }
     public function match() {
-        require "templates/match.phtml";
+        $this->render([], 'match');
     }
     public function matchs() {
-        require "templates/matches.phtml";
+        $this->render([], 'matchs');
     }
     public function player() {
-        require "templates/player.phtml";
+        $this->render([], 'player');
     }
     public function players() {
-        require "templates/players.phtml";
+        $this->render([], 'players');
     }
     public function team() {
-        require "templates/team.phtml";
+        $this->render([], 'team');
     }
     public function teams() {
-        require "templates/teams.phtml";
+        $this->render([], 'teams');
     }
 }
