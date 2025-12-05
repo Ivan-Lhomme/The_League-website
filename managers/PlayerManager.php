@@ -1,7 +1,7 @@
 <?php
 class PlayerManager extends AbstractManager{
     public function findOne(int $id) : Player {
-        $query = $this->db->prepare("SELECT players.*, teams.name AS teamName FROM players JOIN teams ON players.team = teams.id WHERE id = :id");
+        $query = $this->db->prepare("SELECT players.*, teams.name AS teamName FROM players JOIN teams ON players.team = teams.id WHERE players.id = :id");
         $parameters = [
             "id" => $id
         ];
@@ -10,7 +10,7 @@ class PlayerManager extends AbstractManager{
         $player_data = $query->fetch(PDO::FETCH_ASSOC);
         $mediaManager = new MediaManager;
 
-        $image = $mediaManager->findOne($player_data["id"]);
+        $image = $mediaManager->findOne($player_data["portrait"]);
         $player = new Player($player_data["nickname"], $player_data["bio"], $image, $player_data["teamName"]);
         $player->setId($player_data["id"]);
 
@@ -25,7 +25,7 @@ class PlayerManager extends AbstractManager{
         $mediaManager = new MediaManager;
         
         foreach ($players_data as $player_data) {
-            $image = $mediaManager->findOne($player_data["id"]);
+            $image = $mediaManager->findOne($player_data["portrait"]);
             $p = new Player($player_data["nickname"], $player_data["bio"], $image, $player_data["teamName"]);
             $p->setId($player_data["id"]);
             $players[] = $p;
@@ -45,7 +45,7 @@ class PlayerManager extends AbstractManager{
         $mediaManager = new MediaManager;
         
         foreach ($players_data as $player_data) {
-            $image = $mediaManager->findOne($player_data["id"]);
+            $image = $mediaManager->findOne($player_data["portrait"]);
             $p = new Player($player_data["nickname"], $player_data["bio"], $image, $player_data["teamName"]);
             $p->setId($player_data["id"]);
             $players[] = $p;
