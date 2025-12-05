@@ -1,6 +1,8 @@
 <?php
 class Games{
-    public function __construct(private int $id, private string $name, private DateTime $date, private Team $team_1, private Team $team_2, private int $winner) {}
+    private int $id;
+    
+    public function __construct(private string $name, private DateTime $date, private Team $team_1, private Team $team_2, private int $winner) {}
 
     public function getId()
     {
