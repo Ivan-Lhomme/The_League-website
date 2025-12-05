@@ -8,7 +8,7 @@
                 <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
                 <p><?= $team->getName() ?></p>
                 <p><?= $team->getDescription() ?></p>
-                <button>DECOUVREZ <?= $team->getName() ?></button>
+                <button onclick="window.location.href = '?route=team&teamId=<?= $team->getId() ?>';">DECOUVREZ <?= $team->getName() ?></button>
             </div>
         <?php } ?>
     </section>
