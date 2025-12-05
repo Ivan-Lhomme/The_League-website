@@ -2,13 +2,13 @@
     <h1>LES TEAMS DE LA LEAGUE</h1>
     <section>
         <?php foreach ($data as $team) {
-            $media = new MediaManager;
-            $logo = $media->findOne($team["logo"])?>
+            $logo = $team->getLogo(); ?>
+            
             <div>
-                <img src="<?= $logo["url"] ?>" alt="<?= $logo["alt"] ?>">
-                <p><?= $team["name"] ?></p>
-                <p><?= $team["description"] ?></p>
-                <button>DECOUVREZ <?= $team["name"] ?></button>
+                <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
+                <p><?= $team->getName() ?></p>
+                <p><?= $team->getDescription() ?></p>
+                <button>DECOUVREZ <?= $team->getName() ?></button>
             </div>
         <?php } ?>
     </section>
