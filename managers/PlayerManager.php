@@ -20,7 +20,7 @@ class PlayerManager extends AbstractManager{
         $query = $this->db->prepare("SELECT * FROM players");
         $query->execute();
 
-        $players_data = $query->fetch(PDO::FETCH_ASSOC);
+        $players_data = $query->fetchAll(PDO::FETCH_ASSOC);
         $players = [];
         $mediaManager = new MediaManager;
         
