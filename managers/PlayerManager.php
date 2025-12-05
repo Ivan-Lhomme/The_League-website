@@ -1,7 +1,7 @@
 <?php
 class PlayerManager extends AbstractManager{
     public function findOne(int $id) : Player {
-        $query = $this->db->prepare("SELECT player.*, teams.name AS teamName FROM players JOIN teams ON player.team = teams.id WHERE id = :id");
+        $query = $this->db->prepare("SELECT players.*, teams.name AS teamName FROM players JOIN teams ON players.team = teams.id WHERE id = :id");
         $parameters = [
             "id" => $id
         ];
@@ -17,7 +17,7 @@ class PlayerManager extends AbstractManager{
         return $player;
     }
     public function findAll() : array {
-        $query = $this->db->prepare("SELECT players.*, teams.name AS teamName FROM players JOIN teams ON player.team = teams.id");
+        $query = $this->db->prepare("SELECT players.*, teams.name AS teamName FROM players JOIN teams ON players.team = teams.id");
         $query->execute();
 
         $players_data = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -34,7 +34,7 @@ class PlayerManager extends AbstractManager{
         return $players;
     }
     public function findTeam(int $teamId) {
-        $query = $this->db->prepare("SELECT player.*, teams.name AS teamName FROM players JOIN teams ON player.team = team.id WHERE player.team = :teamId");
+        $query = $this->db->prepare("SELECT players.*, teams.name AS teamName FROM players JOIN teams ON players.team = team.id WHERE players.team = :teamId");
         $parameters = [
             "teamId" => $teamId
         ];
