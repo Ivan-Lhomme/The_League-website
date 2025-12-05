@@ -13,6 +13,9 @@
     <title>THE LEAGUE</title>
 </head>
 <body>
-    <?php require "templates/$template.phtml" ?>
+    <?php
+        require "templates/partials/_nav.phtml";
+        require "templates/$template.phtml";
+    ?>
 </body>
 </html>
