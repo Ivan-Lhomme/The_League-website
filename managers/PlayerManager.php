@@ -34,7 +34,7 @@ class PlayerManager extends AbstractManager{
         return $players;
     }
     public function findTeam(int $teamId) {
-        $query = $this->db->prepare("SELECT players.*, teams.name AS teamName FROM players JOIN teams ON players.team = team.id WHERE players.team = :teamId");
+        $query = $this->db->prepare("SELECT players.*, teams.name AS teamName FROM players JOIN teams ON players.team = teams.id WHERE players.team = :teamId");
         $parameters = [
             "teamId" => $teamId
         ];
