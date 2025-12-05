@@ -1,0 +1,46 @@
+
+    <header>
+        <h2>Tout sur la League</h2>
+        <p>Les players, les teams et l'actu des matchs</p>
+    </header>
+    <main>
+        <div class = "a_la_une">
+            <h3>La team a la une!!!!!!!!!!!!!!!!!!!!</h3>
+            <div class = "pres">
+                <h3>Wallah non</h3>
+            </div>
+        </div>
+        <div class = "players_a_la_une">
+            <h3>Les players a la une</h3>
+            <?php
+                $media = new MediaManager;
+                $playerManager = new PlayerManager;
+            ?>
+
+            <?php $players_data = [
+            ['player_id' => 3, 'media_id' => 8],
+            ['player_id' => 14, 'media_id' => 20],
+            ['player_id' => 12, 'media_id' => 17],
+            ]; ?>
+            <?php foreach ($players_data as $data) {
+                $player = $playerManager->findOne($data['player_id']);
+                $image = $media->findOne($data['media_id']);
+            ?>
+            <div class="<?= $player['name'] ?>">
+                <img src="<?= htmlspecialchars($image['image_url']) ?>" alt="<?= htmlspecialchars($player['name']) ?>">
+                <h3><?= $player['name']; ?></h3>
+            </div>
+            <?php } ?>
+        </div>
+        <div class = "Match_a_la_une">
+            <h3>Le dernier Match</h3>
+            <div class = "team1">
+                <h3>VENDETTA VS OWLS</h3>
+                <p>17/01/2024</p>
+                <?php $media = new MediaManager; ?>
+                <img src="<?php $media->findOne(4); ?>" alt="logo Vendetta">
+                <img src="<?php $media->findOne(1); ?>" alt="logo Owls">
+            </div>
+        </div>
+
+    </main>
