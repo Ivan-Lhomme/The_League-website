@@ -2,7 +2,7 @@
 class PlayerPerformanceManager extends AbstractManager{
     public function findOne(int $id) : array {
         $query = $this->db->prepare("SELECT * FROM players_performance WHERE id = :id");
-        $parameters = [players_performance
+        $parameters = [
             "id" => $id
         ];
         $query->execute($parameters);
