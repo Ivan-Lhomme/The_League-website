@@ -15,8 +15,9 @@ class PageController extends AbstractController {
     public function players() {
         $this->render([], 'players');
     }
-    public function team() {
-        $this->render([], 'team');
+    public function team($teamId) {
+        $teamManager = new TeamManager;
+        $this->render([$teamManager->findOne($teamId)], 'team');
     }
     public function teams() {
         $teamManager = new TeamManager;

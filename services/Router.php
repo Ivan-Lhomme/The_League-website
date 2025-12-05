@@ -11,7 +11,7 @@ class Router{
             } else if ($get["route"] === "matchs") {
                 $page->matchs();
             } else if ($get["route"] === "team") {
-                $page->team();
+                $page->team($get["teamId"]);
             } else if ($get["route"] === "player") {
                 $page->player();
             } else if ($get["route"] === "match") {

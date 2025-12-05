@@ -5,6 +5,8 @@ class TeamManager extends AbstractManager{
         $parameters = [
             "id" => $id
         ];
+        $query->execute($parameters);
+
         $team_data = $query->fetch(PDO::FETCH_ASSOC);
         $mediaManager = new MediaManager;
         $playerManager = new PlayerManager;
