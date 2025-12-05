@@ -9,7 +9,7 @@ class TeamManager extends AbstractManager{
         $mediaManager = new MediaManager;
 
         $image = $mediaManager->findOne($team_data["id"]);
-        $team = new Player($team_data["name"], $team_data["description"], $image);
+        $team = new Team($team_data["name"], $team_data["description"], $image);
         $team->setId($team_data["id"]);
 
         return $team;
@@ -24,9 +24,9 @@ class TeamManager extends AbstractManager{
 
         foreach ($teams_data as $team_data) {
             $image = $mediaManager->findOne($team_data["id"]);
-            $p = new Player($team_data["name"], $team_data["description"], $image);
-            $p->setId($team_data["id"]);
-            $teams[] = $p;
+            $t = new Team($team_data["name"], $team_data["description"], $image);
+            $t->setId($team_data["id"]);
+            $teams[] = $t;
         }
 
         return $teams;
