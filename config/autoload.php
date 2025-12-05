@@ -1,4 +1,8 @@
 <?php
+require "models/Image.php";
+require "models/Player.php";
+require "models/Team.php";
+
 require "managers/AbstractManager.php";
 require "managers/GamesManager.php";
 require "managers/MediaManager.php";
