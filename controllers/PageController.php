@@ -19,6 +19,7 @@ class PageController extends AbstractController {
         $this->render([], 'team');
     }
     public function teams() {
-        $this->render([], 'teams');
+        $teamManager = new TeamManager;
+        $this->render($teamManager->findAll(), 'teams');
     }
 }
