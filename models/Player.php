@@ -1,6 +1,8 @@
 <?php
 class Player{
-    public function __construct(private int $id, private string $nickname, private string $bio, private Image $image, private int $teamId) {}
+    private int $id;
+    
+    public function __construct(private string $nickname, private string $bio, private Image $image, private int $teamId) {}
 
     public function getId()
     {

@@ -1,6 +1,8 @@
 <?php
 class Team{
-    public function __construct(private int $id, private string $name, private string $description, private Image $logo) {}
+    private int $id;
+
+    public function __construct(private string $name, private string $description, private Image $logo) {}
 
     public function getId()
     {

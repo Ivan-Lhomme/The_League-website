@@ -1,6 +1,8 @@
 <?php
 class Image{
-    public function __construct(private int $id, private string $url, private string $alt) { }
+    private int $id;
+    
+    public function __construct(private string $url, private string $alt) { }
 
     public function getId()
     {
