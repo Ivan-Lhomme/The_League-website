@@ -7,9 +7,10 @@ class TeamManager extends AbstractManager{
         ];
         $team_data = $query->fetch(PDO::FETCH_ASSOC);
         $mediaManager = new MediaManager;
+        $playerManager = new PlayerManager;
 
         $image = $mediaManager->findOne($team_data["id"]);
-        $team = new Team($team_data["name"], $team_data["description"], $image);
+        $team = new Team($team_data["name"], $team_data["description"], $image, $playerManager->findTeam($team_data["id"]));
         $team->setId($team_data["id"]);
 
         return $team;
@@ -21,10 +22,11 @@ class TeamManager extends AbstractManager{
         $teams_data = $query->fetchAll(PDO::FETCH_ASSOC);
         $teams = [];
         $mediaManager = new MediaManager;
+        $playerManager = new PlayerManager;
 
         foreach ($teams_data as $team_data) {
             $image = $mediaManager->findOne($team_data["id"]);
-            $t = new Team($team_data["name"], $team_data["description"], $image);
+            $t = new Team($team_data["name"], $team_data["description"], $image, $playerManager->findTeam($team_data["id"]));
             $t->setId($team_data["id"]);
             $teams[] = $t;
         }

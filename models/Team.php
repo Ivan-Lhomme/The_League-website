@@ -2,7 +2,7 @@
 class Team{
     private int $id;
 
-    public function __construct(private string $name, private string $description, private Image $logo) {}
+    public function __construct(private string $name, private string $description, private Image $logo, private array $players) {}
 
     public function getId()
     {
@@ -38,5 +38,14 @@ class Team{
     public function setLogo($logo)
     {
         return $this->logo = $logo;
+    }
+
+    public function getPlayers()
+    {
+        return $this->players;
+    }
+    public function setPlayers($players)
+    {
+        return $this->players = $players;
     }
 }
