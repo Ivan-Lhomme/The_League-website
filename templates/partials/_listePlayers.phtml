@@ -1,0 +1,34 @@
+<?php
+    require "managers/AbstractManager.php";
+    /*asked chatgpt, prompt: make the code cleaner */
+    $query = AbstractManager::$db->prepare(" 
+        SELECT 
+            p.nickname,
+            p.portrait,
+            m.url,
+            t.name AS team_name
+        FROM players AS p
+        JOIN media AS m ON p.id = m.player_id
+        JOIN teams AS t ON t.id = p.team
+    ");
+    $query->execute();
+    $values = $query->fetchAll();
+?>
+
+
+<section class = "list_players">
+    <article>
+        <?php foreach($values as $players) { ?>
+            <div>
+                <img src="<?php echo $players['portrait']; ?>" alt="<?php echo $players['nickname']; ?>" />
+                <h3> <?= $players['nickname']; ?></h3>
+                <p><?= $players['teams_name']; ?></p>
+            </div>
+        <?php } ?>
+
+
+    </article>
+</section>
+
+
+
