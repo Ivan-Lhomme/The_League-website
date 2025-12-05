@@ -1,12 +1,15 @@
 nav {
     text-align: center;
-    font-size: ;
     color: white;
+}
+#titre {
+    font-weight: 100;   
 }
 .item_bloc_nav {
     margin-right: 10%;
     margin-left: 10%;
     text-decoration:none;
+    font-weight: 500;
     color: white;
 }
 nav > div {
@@ -25,4 +28,7 @@ body {
     margin-top: 0;
     border: 1px solid #1c2541;
     color: white;
+}
+html {
+    font-family: ubuntu;
 }
