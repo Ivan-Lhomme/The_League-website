@@ -7,59 +7,64 @@
         $playerPerfs = $player->getStats();
     ?>
 
-    <section>
+    <section id="top">
         <h2><?= $player->getNickname() ?></h2>
         <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
     </section>
 
-    <section>
+    <section id="table">
         <h2>SES PERFORMANCES</h2>
-        <table>
-            <thead>
-                <th>TEAM ADVERSE</th>
-                <th>POINTS</th>
-                <th>ASSISTS</th>
-                <th>VICTOIRE ?</th>
-            </thead>
-            <tbody>
-                <?php foreach($playerPerfs as $playerPerf) {
-                    $game = $playerPerf->getGame();
-                    $teamWin = "Non";
+        <div>
+            <div id="table-top">
+                <p>TEAM ADVERSE</p>
+                <p>POINTS</p>
+                <p>ASSISTS</p>
+                <p>VICTOIRE ?</p>
+            </div>
 
-                    if ($game->getTeam_1()->getName() === $player->getTeam()["name"]) {
-                        $opponentTeam = $game->getTeam_2()->getName();
+            <?php foreach($playerPerfs as $playerPerf) {
+                $game = $playerPerf->getGame();
+                $teamWin = "Non";
 
-                        if ($game->getWinner() === $game->getTeam_1()->getId()) {
-                            $teamWin = "Oui";
-                        }
-                    } else {
-                        $opponentTeam = $game->getTeam_1()->getName();
+                if ($game->getTeam_1()->getName() === $player->getTeam()["name"]) {
+                    $opponentTeam = $game->getTeam_2()->getName();
 
-                        if ($game->getWinner() === $game->getTeam_2()->getId()) {
-                            $teamWin = "Oui";
-                        }
+                    if ($game->getWinner() === $game->getTeam_1()->getId()) {
+                        $teamWin = "Oui";
                     }
-                ?>
-                    <td><?= $opponentTeam ?></td>
-                    <td><?= $playerPerf->getPoints() ?></td>
-                    <td><?= $playerPerf->getAssists() ?></td>
-                    <td><?= $teamWin ?></td>
-                <?php } ?>
-            </tbody>
-        </table>
+                } else {
+                    $opponentTeam = $game->getTeam_1()->getName();
+
+                    if ($game->getWinner() === $game->getTeam_2()->getId()) {
+                        $teamWin = "Oui";
+                    }
+                }
+            ?>
+                <div class="table-body">
+                    <p class="team-name"><?= $opponentTeam ?></p>
+                    <p><?= $playerPerf->getPoints() ?></p>
+                    <p><?= $playerPerf->getAssists() ?></p>
+                    <p
+                        <?php if ($teamWin === "Oui") {?> class="green" <?php } else {?> class="red" <?php } ?>
+                    ><?= $teamWin ?></p>
+                </div>
+            <?php } ?>
+        </div>
     </section>
 
-    <section>
+    <section id="team">
         <h2>SA TEAM</h2>
-        <?php foreach($teammates as $teammate) {
-            if ($teammate->getId() !== $player->getId()) {
-                $image = $teammate->getImage() ?>
-                <div>
-                    <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
-                    <p><?= $teammate->getNickname() ?></p>
-                    <button onclick="window.location.href = '?route=player&playerId=<?= $teammate->getId() ?>';">DECOUVREZ <?= $teammate->getNickname() ?></button>
-                </div>
-            <?php }
-        } ?>
+        <div>
+            <?php foreach($teammates as $teammate) {
+                if ($teammate->getId() !== $player->getId()) {
+                    $image = $teammate->getImage() ?>
+                    <div>
+                        <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
+                        <p><?= $teammate->getNickname() ?></p>
+                        <button onclick="window.location.href = '?route=player&playerId=<?= $teammate->getId() ?>';">DECOUVREZ <?= $teammate->getNickname() ?></button>
+                    </div>
+                <?php }
+            } ?>
+        </div>
     </section>
 </main>
