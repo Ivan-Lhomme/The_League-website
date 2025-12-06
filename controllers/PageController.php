@@ -3,6 +3,7 @@ class PageController extends AbstractController {
     public function home() {
         $playerManager = new PlayerManager;
         $teamManager = new TeamManager;
+        $gamesManager = new GamesManager;
 
         $featuredPlayerIds = [3, 14, 12]; /*transfered this from home.phtml to here*/
         $featuredPlayers = [];
@@ -13,14 +14,9 @@ class PageController extends AbstractController {
         $featuredTeamId = 1;  // Change to a valid team ID from your DB
         $featuredTeam = $teamManager->findOne($featuredTeamId);
 
-        $featuredTeamIds = [1, 5]; /*fixed teams and players for the page*/
-        $featuredTeams = [];
-        foreach ($featuredTeamIds as $teamId) {
-            $team = $teamManager->findOne($teamId);
-            $featuredTeams[] = $team;
-        }
-        $this->render([
-            'featuredPlayers' => $featuredPlayers, 'featuredTeams' => $featuredTeams, 'featuredTeam' => $featuredTeam], 'home');
+        $lastGame = $gamesManager->findLast();
+
+        $this->render(['featuredPlayers' => $featuredPlayers, 'lastGame' => $lastGame, 'featuredTeam' => $featuredTeam], 'home');
     }
     public function match() {
         $this->render([], 'match');
