@@ -3,7 +3,7 @@ class Player{
     private int $id;
     private array $stats;
     
-    public function __construct(private string $nickname, private string $bio, private Image $image, private string $teamName) {}
+    public function __construct(private string $nickname, private string $bio, private Image $image, private array $team) {}
 
     public function getId()
     {
@@ -41,13 +41,13 @@ class Player{
         return $this->image = $image;
     }
 
-    public function getTeamName()
+    public function getTeam()
     {
-        return $this->teamName;
+        return $this->team;
     }
-    public function setTeamName($teamName)
+    public function setTeam($team)
     {
-        return $this->teamName = $teamName;
+        return $this->team = $team;
     }
 
     public function getStats()

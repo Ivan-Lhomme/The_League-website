@@ -1,8 +1,8 @@
 <main>
     <?php
         $player = $data["player"];
-        $image = $player->getImage;
-        $teamPlayers = $data["playerTeam"];
+        $image = $player->getImage();
+        $teammates = $data["teammates"];
 
         $playerPerfs = $player->getStats();
     ?>
@@ -51,13 +51,15 @@
 
     <section>
         <h2>SA TEAM</h2>
-        <?php foreach($teamPlayers as $teamate) {
-            $image = $teamate->getImage() ?>
-            <div>
-                <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
-                <p><?= $teamate->getNickname() ?></p>
-                <button onclick="window.location.href = '?route=player&playerId=<?= $teamate->getId() ?>';">DECOUVREZ <?= $teamate->getNickname() ?></button>
-            </div>
-        <?php } ?>
+        <?php foreach($teammates as $teammate) {
+            if ($teammate->getId() !== $player->getId()) {
+                $image = $teammate->getImage() ?>
+                <div>
+                    <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
+                    <p><?= $teammate->getNickname() ?></p>
+                    <button onclick="window.location.href = '?route=player&playerId=<?= $teammate->getId() ?>';">DECOUVREZ <?= $teammate->getNickname() ?></button>
+                </div>
+            <?php }
+        } ?>
     </section>
 </main>

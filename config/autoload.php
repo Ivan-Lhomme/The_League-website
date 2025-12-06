@@ -3,6 +3,7 @@ require "models/Image.php";
 require "models/Player.php";
 require "models/Team.php";
 require "models/Games.php";
+require "models/PlayerPerf.php";
 
 require "managers/AbstractManager.php";
 require "managers/GamesManager.php";

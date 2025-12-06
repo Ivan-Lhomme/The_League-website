@@ -13,7 +13,7 @@ class PageController extends AbstractController {
         $featuredTeamId = 1;  // Change to a valid team ID from your DB
         $featuredTeam = $teamManager->findOne($featuredTeamId);
 
-        $featuredTeamIds = [4, 1]; /*fixed teams and players for the page*/
+        $featuredTeamIds = [1, 5]; /*fixed teams and players for the page*/
         $featuredTeams = [];
         foreach ($featuredTeamIds as $teamId) {
             $team = $teamManager->findOne($teamId);
@@ -28,8 +28,20 @@ class PageController extends AbstractController {
     public function matchs() {
         $this->render([], 'matchs');
     }
-    public function player() {
-        $this->render([], 'player');
+    public function player(int $id) {
+        $playerManager = new PlayerManager;
+        $playerPerformanceManager = new PlayerPerformanceManager;
+
+        $player = $playerManager->findOne($id);
+        $player->setStats($playerPerformanceManager->findAll($player->getId()));
+
+        $teammates = $playerManager->findTeam($player->getTeam()["id"]);
+        $data = [
+            "player" => $player,
+            "teammates" => $teammates
+        ];
+
+        $this->render($data, 'player');
     }
     public function players() {
         $playerManager = new PlayerManager;

@@ -11,7 +11,12 @@ class PlayerManager extends AbstractManager{
         $mediaManager = new MediaManager;
 
         $image = $mediaManager->findOne($player_data["portrait"]);
-        $player = new Player($player_data["nickname"], $player_data["bio"], $image, $player_data["teamName"]);
+        $team = [
+            "id" => $player_data["team"],
+            "name" => $player_data["teamName"]
+        ];
+
+        $player = new Player($player_data["nickname"], $player_data["bio"], $image, $team);
         $player->setId($player_data["id"]);
 
         return $player;
@@ -26,8 +31,14 @@ class PlayerManager extends AbstractManager{
         
         foreach ($players_data as $player_data) {
             $image = $mediaManager->findOne($player_data["portrait"]);
-            $p = new Player($player_data["nickname"], $player_data["bio"], $image, $player_data["teamName"]);
+            $team = [
+                "id" => $player_data["team"],
+                "name" => $player_data["teamName"]
+            ];
+
+            $p = new Player($player_data["nickname"], $player_data["bio"], $image, $team);
             $p->setId($player_data["id"]);
+
             $players[] = $p;
         }
 
@@ -46,8 +57,14 @@ class PlayerManager extends AbstractManager{
         
         foreach ($players_data as $player_data) {
             $image = $mediaManager->findOne($player_data["portrait"]);
-            $p = new Player($player_data["nickname"], $player_data["bio"], $image, $player_data["teamName"]);
+            $team = [
+                "id" => $player_data["team"],
+                "name" => $player_data["teamName"]
+            ];
+
+            $p = new Player($player_data["nickname"], $player_data["bio"], $image, $team);
             $p->setId($player_data["id"]);
+
             $players[] = $p;
         }
 
