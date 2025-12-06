@@ -1,26 +1,15 @@
 <main> 
     <h1> LES MATCHS </h1>
     <section> 
-        <div class="match"> 
-            <p> date </p>
-            <div>
-                <p>  </p>
+        <?php foreach ($data as $game) { ?>
+            <div class="match"> 
+                <p> <?=$game->getName() ?> </p>
+                <p> <?=$game->getDate()->format("d-m-Y")?></p>
+                <div>
+                    <p> hgfhjfyt </p>
+                </div>
+                <button> detail du match </button>
             </div>
-            <p> details du match </p>
-        </div>
-        <div class="match">
-            <p> date </p>
-            <div>
-                <p> logo     logo </p>
-            </div>
-            <p> details du match </p>
-        </div>
-        <div class="match"> 
-            <p> date </p>
-            <div>
-                <p> logo     logo </p>
-            </div>
-            <p> details du match </p>
-        </div>
-    </section> 
+        <?php } ?>
+    </section>
 </main>
