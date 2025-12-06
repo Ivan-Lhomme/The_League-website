@@ -60,11 +60,12 @@ header {
     margin-top: 2vw;
     border: 1px solid #1c2541;
     border-radius: 1px;
-    padding: 2vw;
-    width: 45%;
+    width: 50%;
+    height: 65%;
     margin-left: 25%;
 }
 .teams h2 {
+    margin-bottom: 5vw;
     color: white;
     text-decoration: none;
 }
@@ -72,6 +73,9 @@ header {
     color: white;
     text-decoration: none;
     text-align: center;
+    margin-bottom: 5vw;
+    color: #83a1bb;
+    font-size: 10px;
 }
 
 .team_logo {

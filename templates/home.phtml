@@ -4,22 +4,31 @@
         <p>Les players, les teams et l'actu des matchs</p>
     </header>
     <main>
-        <div class = "a_la_une">
+        <section class="a_la_une">
             <h2>La team a la une</h2>
-            <div class = "pres">
 
+            <div class="pres">
                 <?php $logo = $featuredTeam->getLogo(); ?>
-                <h3>angry owls</h3>
-                <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
-                <p>Les players</p>
-                <?php foreach($featuredTeam->getPlayers() as $players) { ?>
-                   <?php $image = $players->getImage() ?>
-                    <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
-                    <h3><?php $players->getNickName() ?></h3>
-                <?php } ?>
 
+                <div class="team">
+                    <!-- Team logo -->
+                    <div class="team-logo">
+                        <h3>angry owls</h3>
+                        <p>Les Players</p>
+                        <img class="logo" src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
+                    </div>
+                    <div class="players">
+                        <?php foreach($featuredTeam->getPlayers() as $player) { ?>
+                            <?php $image = $player->getImage(); ?>
+                            <div class="player">
+                                <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
+                                <p><?= $player->getNickName() ?></p>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
         <section class="players_a_la_une">
             <h2>Les players à la une</h2>
             <div class = "cards">
