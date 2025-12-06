@@ -5,8 +5,8 @@
             $image = $player->getImage() ?>
             <div>
                 <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
-                <p><?= $player->getNickname() ?></p>
-                <p><?= $player->getTeam()["name"] ?></p>
+                <p class="player-name"><?= $player->getNickname() ?></p>
+                <p class="team-name"><?= $player->getTeam()["name"] ?></p>
                 <button onclick="window.location.href = '?route=player&playerId=<?= $player->getId() ?>';">DECOUVREZ <?= $player->getNickname() ?></button>
             </div>
         <?php } ?>
