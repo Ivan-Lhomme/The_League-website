@@ -1,7 +1,8 @@
 
     <header>
-        <h2>Tout sur la League</h2>
+        <h1>Tout sur la League</h1>
         <p>Les players, les teams et l'actu des matchs</p>
+        <img src=../images/home_background_league.png")" alt="home background" >
     </header>
     <main>
 
@@ -13,7 +14,7 @@
                     <div class="players">
                         <div class="player logo-block">
                             <?php $logo = $featuredTeam->getLogo(); ?>
-                            <img class="team-logo" src="<?= htmlspecialchars($logo->getUrl()) ?>" alt="<?= htmlspecialchars($logo->getAlt()) ?>">
+                            <img class="team-logo" src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
                         </div>
 
                         <?php $first = true; /* Flag to add overlay only on the first player image */ ?>
@@ -22,13 +23,13 @@
                             <div class="player">
                                 <?php if ($first) : ?>
                                     <div class="overlay-text">
-                                        <h2>angry owls</h2>
+                                        <h3>Angry Owls</h3>
                                         <p>Les Players</p>
                                     </div>
                                     <?php $first = false; ?>
                                 <?php endif; ?>
-                                <img src="<?= htmlspecialchars($image->getUrl()) ?>" alt="<?= htmlspecialchars($image->getAlt()) ?>">
-                                <h3><?= htmlspecialchars($player->getNickName()) ?></h3>
+                                <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
+                                <h3><?= $player->getNickName() ?></h3>
                             </div>
                         <?php endforeach; ?>
                     </div>
