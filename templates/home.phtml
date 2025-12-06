@@ -4,27 +4,33 @@
         <p>Les players, les teams et l'actu des matchs</p>
     </header>
     <main>
+
+
         <section class="a_la_une">
             <h2>La team a la une</h2>
-
             <div class="pres">
-                <?php $logo = $featuredTeam->getLogo(); ?>
-
                 <div class="team">
-                    <!-- Team logo -->
-                    <div class="team-logo">
-                        <h3>angry owls</h3>
-                        <p>Les Players</p>
-                        <img class="logo" src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
-                    </div>
                     <div class="players">
-                        <?php foreach($featuredTeam->getPlayers() as $player) { ?>
+                        <div class="player logo-block">
+                            <?php $logo = $featuredTeam->getLogo(); ?>
+                            <img class="team-logo" src="<?= htmlspecialchars($logo->getUrl()) ?>" alt="<?= htmlspecialchars($logo->getAlt()) ?>">
+                        </div>
+
+                        <?php $first = true; /* Flag to add overlay only on the first player image */ ?>
+                        <?php foreach ($featuredTeam->getPlayers() as $player) : ?>
                             <?php $image = $player->getImage(); ?>
                             <div class="player">
-                                <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
-                                <p><?= $player->getNickName() ?></p>
+                                <?php if ($first) : ?>
+                                    <div class="overlay-text">
+                                        <h2>angry owls</h2>
+                                        <p>Les Players</p>
+                                    </div>
+                                    <?php $first = false; ?>
+                                <?php endif; ?>
+                                <img src="<?= htmlspecialchars($image->getUrl()) ?>" alt="<?= htmlspecialchars($image->getAlt()) ?>">
+                                <h3><?= htmlspecialchars($player->getNickName()) ?></h3>
                             </div>
-                        <?php } ?>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
