@@ -6,8 +6,8 @@
             
             <div>
                 <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
-                <p><?= $team->getName() ?></p>
-                <p><?= $team->getDescription() ?></p>
+                <p class="team-name"><?= $team->getName() ?></p>
+                <p class="team-desc"><?= $team->getDescription() ?></p>
                 <button onclick="window.location.href = '?route=team&teamId=<?= $team->getId() ?>';">DECOUVREZ <?= $team->getName() ?></button>
             </div>
         <?php } ?>

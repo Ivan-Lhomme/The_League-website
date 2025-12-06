@@ -1,0 +1,50 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1{
+    margin: 3% 0;
+    font-size: 2.5vw;
+    width: fit-content;
+    color: #d4b52f;
+}
+section{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 6%;
+    width: 60%;
+}
+section > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4%;
+    padding: 4% 0;
+}
+section > div > *{
+    margin: 0;
+}
+img{
+    width: 100%;
+}
+button{
+    background-color: #0b132b;
+    border: 1px solid rgba(212, 181, 47, 0.5);
+    border-radius: 0.5vw;
+    color: #d4b52f;
+    font-size: 0.8vw;
+    padding: 3% 6%;
+}
+
+.team-name{
+    font-size: 2vw;
+    color: #d4b52f;
+}
+.team-desc{
+    font-family: "Roboto", sans-serif;
+    font-size: 0.8vw;
+    font-weight: 500;
+    color: white;
+}
