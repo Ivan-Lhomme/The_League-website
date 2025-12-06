@@ -18,7 +18,7 @@ class GamesManager extends AbstractManager{
         $query = $this->db->prepare("SELECT * FROM games");
         $query->execute();
 
-        $games_data = $query->fetch(PDO::FETCH_ASSOC);
+        $games_data = $query->fetchAll(PDO::FETCH_ASSOC);
         $games = [];
         $teamManager = new TeamManager;
 
