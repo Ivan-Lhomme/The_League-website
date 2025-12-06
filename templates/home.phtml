@@ -51,16 +51,16 @@
 
     <section class="match_a_la_une">
         <h2>Le dernier Match</h2>
-        <div class="teams">
-            <h2>Vendetta vs Owls</h2>
-            <p>17/01/2024</p>
-            <div class = "team_logo">
-                <?php foreach ($data["featuredTeams"] as $team) { ?>
-                    <div class = "<?= $team->getName() ?>">
-                        <?php $teamImage = $team->getLogo(); ?>
-                        <img src="<?= $teamImage->getUrl() ?>" alt="<?= $teamImage->getAlt() ?>">
-                    </div>
-                <?php } ?>
+        <div id="teams">
+            <h2><?= $data["lastGame"]->getName() ?></h2>
+            <p><?= $data["lastGame"]->getDate()->format("d/m/Y") ?></p>
+
+            <div>
+                <?php $logo = $data["lastGame"]->getTeam_1()->getLogo() ?>
+                <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
+
+                <?php $logo = $data["lastGame"]->getTeam_2()->getLogo() ?>
+                <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
             </div>
         </div>
     </section>
