@@ -32,7 +32,7 @@ class GamesManager extends AbstractManager{
     }
 
     public function findLast() {
-        $query = $this->db->prepare("SELECT * FROM games ORDER BY date LIMIT 1");
+        $query = $this->db->prepare("SELECT * FROM games ORDER BY date DESC LIMIT 1");
         $query->execute();
 
         $game_data = $query->fetch(PDO::FETCH_ASSOC);
