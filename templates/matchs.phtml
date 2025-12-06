@@ -13,7 +13,7 @@
                     <img src="<?= $logo1->getUrl() ?>" alt="<?= $logo1->getAlt() ?>">
                     <img src="<?= $logo2->getUrl() ?>" alt="<?= $logo2->getAlt() ?>">
                 </div>
-                <button> detail du match </button>
+                <button onclick="window.location.href = '?route=matchmatchID=<?= $game->getId() ?>';">detail du match </button>
             </div>
         <?php } ?>
     </section>
