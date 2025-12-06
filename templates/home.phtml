@@ -7,8 +7,9 @@
         <div class = "a_la_une">
             <h2>La team a la une</h2>
             <div class = "pres">
-                <h3>angry owls</h3>
+
                 <?php $logo = $featuredTeam->getLogo(); ?>
+                <h3>angry owls</h3>
                 <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
                 <p>Les players</p>
                 <?php foreach($featuredTeam->getPlayers() as $players) { ?>
@@ -19,34 +20,34 @@
 
             </div>
         </div>
-        <div class="players_a_la_une">
+        <section class="players_a_la_une">
             <h2>Les players à la une</h2>
-
-            <?php foreach ($featuredPlayers as $player) { ?>
-                <div class="<?= $player->getNickname() ?>">
-                    <?php $image = $player->getImage(); ?>
-                    <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
-                    <h3><?= $player->getNickname() ?></h3>
-                    <p><?= $player->getTeam()["name"] ?></p>
-                </div>
-            <?php } ?>
-
-        </div>
+            <div class = "cards">
+                <?php foreach ($featuredPlayers as $player) { ?>
+                    <div class="<?= $player->getNickname() ?>">
+                        <?php $image = $player->getImage(); ?>
+                        <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
+                        <h3><?= $player->getNickname() ?></h3>
+                        <p><?= $player->getTeam()["name"] ?></p>
+                    </div>
+                <?php } ?>
+            </div>
+        </section>
 
         <div class="match_a_la_une">
             <h2>Le dernier Match</h2>
-            <h3>Vendetta vs Owls</h3>
-            <p>17/01/2024</p>
-            <div class="match_a_la_une">
-                <div class="team1">
-                    <?php foreach ($featuredTeams as $team) { ?>
-                        <div>
-                            <?php $teamImage = $team->getLogo(); ?>
-                            <img src="<?= $teamImage->getUrl() ?>" alt="<?= $teamImage->getAlt() ?>">
-                            <p><?= $team->getName() ?></p>
-                        </div>
-                    <?php } ?>
-
+                <div class="teams">
+                    <h2>Vendetta vs Owls</h2>
+                    <p>17/01/2024</p>
+                    <div class = "team_logo">
+                        <?php foreach ($featuredTeams as $team) { ?>
+                            <div class = "<?= $team->getName() ?>">
+                                <?php $teamImage = $team->getLogo(); ?>
+                                <img src="<?= $teamImage->getUrl() ?>" alt="<?= $teamImage->getAlt() ?>">
+                            </div>
+                        <?php } ?>
+                    </div>
                 </div>
+        </div>
 
     </main>

@@ -1,0 +1,90 @@
+header {
+    background-image: url("assets/images/home_background_league.png");
+    align-items: center;
+}
+
+.a_la_une{
+
+}
+
+.players_a_la_une h2 {
+    text-transform: uppercase;
+    color: #d97ab5;
+    text-decoration:underline;
+    text-align: center;
+    text-underline-offset: 10px;
+
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    gap: 2vw;
+
+}
+
+.cards div[class] {
+    border: 1px solid #1c2541;
+    border-radius: 1px;
+    padding: 2vw;
+}
+
+.cards div[class] img {
+    width: 20vw;
+    height: 20vw;
+}
+.cards div[class] h3 {
+    color: #d97ab5;
+    text-transform: uppercase; /*found on stack overflow*/
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+}
+.cards div[class] p {
+    color: #d4b52f;
+    font-size: 15px;
+}
+
+.match_a_la_une h2{
+    margin-top: 5vw;
+    text-transform: uppercase;
+    color: #45a0ec;
+    text-decoration:underline;
+    text-align: center;
+    text-underline-offset: 10px;
+}
+
+.teams {
+    margin-top: 2vw;
+    border: 1px solid #1c2541;
+    border-radius: 1px;
+    padding: 2vw;
+    width: 45%;
+    margin-left: 25%;
+}
+.teams h2 {
+    color: white;
+    text-decoration: none;
+}
+.teams p {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.team_logo {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    justify-content: center;
+}
+
+.teams div[class] img {
+    width: 20vw;
+    height: auto;
+    border: 1px solid #1c2541;
+    border-radius: 1px;
+    padding: 1vw;
+}
