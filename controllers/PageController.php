@@ -1,7 +1,24 @@
 <?php
 class PageController extends AbstractController {
-    public function home(){
-        $this->render([], 'home');
+    public function home() {
+        $playerManager = new PlayerManager;
+        $teamManager = new TeamManager;
+
+        $featuredPlayerIds = [3, 14, 12]; /*transfered this from home.phtml to here*/
+        $featuredPlayers = [];
+        foreach ($featuredPlayerIds as $playerId) {
+            $player = $playerManager->findOne($playerId);
+            $featuredPlayers[] = $player;
+        }
+
+        $featuredTeamIds = [1, 5]; /*fixed teams and players for the page*/
+        $featuredTeams = [];
+        foreach ($featuredTeamIds as $teamId) {
+            $team = $teamManager->findOne($teamId);
+            $featuredTeams[] = $team;
+        }
+        $this->render([
+            'featuredPlayers' => $featuredPlayers, 'featuredTeams' => $featuredTeams,], 'home');
     }
     public function match() {
         $this->render([], 'match');
