@@ -33,4 +33,5 @@ button{
     color: white;
     font-size: 0.8vw;
     padding: 3% 6%;
+    cursor: pointer;
 }

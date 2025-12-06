@@ -36,6 +36,7 @@ button{
     color: #d4b52f;
     font-size: 0.8vw;
     padding: 3% 6%;
+    cursor: pointer;
 }
 
 .team-name{
