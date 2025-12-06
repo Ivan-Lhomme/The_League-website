@@ -10,6 +10,8 @@ class PageController extends AbstractController {
             $player = $playerManager->findOne($playerId);
             $featuredPlayers[] = $player;
         }
+        $featuredTeamId = 1;  // Change to a valid team ID from your DB
+        $featuredTeam = $teamManager->findOne($featuredTeamId);
 
         $featuredTeamIds = [1, 5]; /*fixed teams and players for the page*/
         $featuredTeams = [];
@@ -18,7 +20,7 @@ class PageController extends AbstractController {
             $featuredTeams[] = $team;
         }
         $this->render([
-            'featuredPlayers' => $featuredPlayers, 'featuredTeams' => $featuredTeams,], 'home');
+            'featuredPlayers' => $featuredPlayers, 'featuredTeams' => $featuredTeams, 'featuredTeam' => $featuredTeam], 'home');
     }
     public function match() {
         $this->render([], 'match');
