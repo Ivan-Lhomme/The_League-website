@@ -1,12 +1,17 @@
 <main> 
     <h1> LES MATCHS </h1>
     <section> 
-        <?php foreach ($data as $game) { ?>
-            <div class="match"> 
+        <?php foreach ($data as $game) {
+            $team1 = $game->getTeam_1();
+            $logo1 = $team1->getLogo();
+            $team2 = $game->getTeam_2();
+            $logo2 = $team2->getLogo(); ?>
+            <div class="match">                 
                 <p> <?=$game->getName() ?> </p>
                 <p> <?=$game->getDate()->format("d-m-Y")?></p>
                 <div>
-                    <p> hgfhjfyt </p>
+                    <img src="<?= $logo1->getUrl() ?>" alt="<?= $logo1->getAlt() ?>">
+                    <img src="<?= $logo2->getUrl() ?>" alt="<?= $logo2->getAlt() ?>">
                 </div>
                 <button> detail du match </button>
             </div>
