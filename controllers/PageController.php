@@ -26,7 +26,8 @@ class PageController extends AbstractController {
         $this->render([], 'match');
     }
     public function matchs() {
-        $this->render([], 'matchs');
+        $gamesManager = new GamesManager;
+        $this->render($gamesManager->findAll(), 'matchs');
     }
     public function player(int $id) {
         $playerManager = new PlayerManager;
