@@ -13,7 +13,8 @@ class PageController extends AbstractController {
         $this->render([], 'player');
     }
     public function players() {
-        $this->render([], 'players');
+        $playerManager = new PlayerManager;
+        $this->render($playerManager->findAll(), 'players');
     }
     public function team($teamId) {
         $teamManager = new TeamManager;
