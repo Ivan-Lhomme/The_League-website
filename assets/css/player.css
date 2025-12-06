@@ -62,6 +62,8 @@ img{
 .table-body > p{
     font-family: "Roboto", sans-serif;
     font-size: 0.8vw;
+    text-align: center;
+    width: 80%;
 }
 
 /* ------------------------------ team ------------------------------ */
