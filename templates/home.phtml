@@ -1,69 +1,67 @@
+<header>
+    <h1>Tout sur la League</h1>
+    <p>Les players, les teams et l'actu des matchs</p>
+    <img src="../images/home_background_league.png" alt="home background" >
+</header>
 
-    <header>
-        <h1>Tout sur la League</h1>
-        <p>Les players, les teams et l'actu des matchs</p>
-        <img src=../images/home_background_league.png")" alt="home background" >
-    </header>
-    <main>
-
-
-        <section class="a_la_une">
-            <h2>La team a la une</h2>
-            <div class="pres">
-                <div class="team">
-                    <div class="players">
-                        <div class="player logo-block">
-                            <?php $logo = $featuredTeam->getLogo(); ?>
-                            <img class="team-logo" src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
-                        </div>
-
-                        <?php $first = true; /* Flag to add overlay only on the first player image */ ?>
-                        <?php foreach ($featuredTeam->getPlayers() as $player) : ?>
-                            <?php $image = $player->getImage(); ?>
-                            <div class="player">
-                                <?php if ($first) : ?>
-                                    <div class="overlay-text">
-                                        <h3>Angry Owls</h3>
-                                        <p>Les Players</p>
-                                    </div>
-                                    <?php $first = false; ?>
-                                <?php endif; ?>
-                                <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
-                                <h3><?= $player->getNickName() ?></h3>
-                            </div>
-                        <?php endforeach; ?>
+<main>
+    <section class="a_la_une">
+        <h2>La team a la une</h2>
+        <div class="pres">
+            <div class="team">
+                <div class="players">
+                    <div class="player logo-block">
+                        <?php $logo = $data["featuredTeam"]->getLogo(); ?>
+                        <img class="team-logo" src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
                     </div>
+
+                    <?php $first = true; /* Flag to add overlay only on the first player image */ ?>
+                    <?php foreach ($data["featuredTeam"]->getPlayers() as $player) : ?>
+                        <?php $image = $player->getImage(); ?>
+                        <div class="player">
+                            <?php if ($first) : ?>
+                                <div class="overlay-text">
+                                    <h3>Angry Owls</h3>
+                                    <p>Les Players</p>
+                                </div>
+                                <?php $first = false; ?>
+                            <?php endif; ?>
+                            <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
+                            <h3><?= $player->getNickName() ?></h3>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
-        </section>
-        <section class="players_a_la_une">
-            <h2>Les players à la une</h2>
-            <div class = "cards">
-                <?php foreach ($featuredPlayers as $player) { ?>
-                    <div class="<?= $player->getNickname() ?>">
-                        <?php $image = $player->getImage(); ?>
-                        <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
-                        <h3><?= $player->getNickname() ?></h3>
-                        <p><?= $player->getTeam()["name"] ?></p>
+        </div>
+    </section>
+
+    <section class="players_a_la_une">
+        <h2>Les players à la une</h2>
+        <div class = "cards">
+            <?php foreach ($data["featuredPlayers"] as $player) { ?>
+                <div class="<?= $player->getNickname() ?>">
+                    <?php $image = $player->getImage(); ?>
+                    <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
+                    <h3><?= $player->getNickname() ?></h3>
+                    <p><?= $player->getTeam()["name"] ?></p>
+                </div>
+            <?php } ?>
+        </div>
+    </section>
+
+    <section class="match_a_la_une">
+        <h2>Le dernier Match</h2>
+        <div class="teams">
+            <h2>Vendetta vs Owls</h2>
+            <p>17/01/2024</p>
+            <div class = "team_logo">
+                <?php foreach ($data["featuredTeams"] as $team) { ?>
+                    <div class = "<?= $team->getName() ?>">
+                        <?php $teamImage = $team->getLogo(); ?>
+                        <img src="<?= $teamImage->getUrl() ?>" alt="<?= $teamImage->getAlt() ?>">
                     </div>
                 <?php } ?>
             </div>
-        </section>
-
-        <div class="match_a_la_une">
-            <h2>Le dernier Match</h2>
-                <div class="teams">
-                    <h2>Vendetta vs Owls</h2>
-                    <p>17/01/2024</p>
-                    <div class = "team_logo">
-                        <?php foreach ($featuredTeams as $team) { ?>
-                            <div class = "<?= $team->getName() ?>">
-                                <?php $teamImage = $team->getLogo(); ?>
-                                <img src="<?= $teamImage->getUrl() ?>" alt="<?= $teamImage->getAlt() ?>">
-                            </div>
-                        <?php } ?>
-                    </div>
-                </div>
         </div>
-
-    </main>
+    </section>
+</main>
