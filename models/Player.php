@@ -1,6 +1,7 @@
 <?php
 class Player{
     private int $id;
+    private array $stats;
     
     public function __construct(private string $nickname, private string $bio, private Image $image, private string $teamName) {}
 
@@ -47,5 +48,14 @@ class Player{
     public function setTeamName($teamName)
     {
         return $this->teamName = $teamName;
+    }
+
+    public function getStats()
+    {
+        return $this->stats;
+    }
+    public function setStats($stats)
+    {
+        return $this->stats = $stats;
     }
 }

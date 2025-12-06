@@ -27,7 +27,7 @@
                     <?php $image = $player->getImage(); ?>
                     <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
                     <h3><?= $player->getNickname() ?></h3>
-                    <p><?= $player->getTeamName() ?></p>
+                    <p><?= $player->getTeam()["name"] ?></p>
                 </div>
             <?php } ?>
 
