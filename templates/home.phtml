@@ -22,29 +22,30 @@
         <div class="players_a_la_une">
             <h2>Les players à la une</h2>
 
-            <?php foreach ($featuredPlayers as $player) : ?>
+            <?php foreach ($featuredPlayers as $player) { ?>
                 <div class="<?= $player->getNickname() ?>">
                     <?php $image = $player->getImage(); ?>
                     <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
                     <h3><?= $player->getNickname() ?></h3>
+                    <p><?= $player->getTeamName() ?></p>
                 </div>
-            <?php endforeach; ?>
+            <?php } ?>
 
         </div>
 
         <div class="match_a_la_une">
             <h2>Le dernier Match</h2>
-            <p>date ici</p>
+            <h3>Vendetta vs Owls</h3>
+            <p>17/01/2024</p>
             <div class="match_a_la_une">
                 <div class="team1">
-                    <?php foreach ($featuredTeams as $team) : ?>
+                    <?php foreach ($featuredTeams as $team) { ?>
                         <div>
                             <?php $teamImage = $team->getLogo(); ?>
                             <img src="<?= $teamImage->getUrl() ?>" alt="<?= $teamImage->getAlt() ?>">
                             <p><?= $team->getName() ?></p>
-                            <button onclick="window.location.href = '?route=team&teamId=<?= $team->getId() ?>';">VOIR ÉQUIPE <?= $team->getName() ?></button>
                         </div>
-                    <?php endforeach; ?>
+                    <?php } ?>
 
                 </div>
 

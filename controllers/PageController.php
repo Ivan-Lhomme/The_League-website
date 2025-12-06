@@ -13,7 +13,7 @@ class PageController extends AbstractController {
         $featuredTeamId = 1;  // Change to a valid team ID from your DB
         $featuredTeam = $teamManager->findOne($featuredTeamId);
 
-        $featuredTeamIds = [1, 5]; /*fixed teams and players for the page*/
+        $featuredTeamIds = [4, 1]; /*fixed teams and players for the page*/
         $featuredTeams = [];
         foreach ($featuredTeamIds as $teamId) {
             $team = $teamManager->findOne($teamId);
