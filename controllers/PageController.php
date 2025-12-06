@@ -19,11 +19,17 @@ class PageController extends AbstractController {
             $team = $teamManager->findOne($teamId);
             $featuredTeams[] = $team;
         }
-        $this->render([
-            'featuredPlayers' => $featuredPlayers, 'featuredTeams' => $featuredTeams, 'featuredTeam' => $featuredTeam], 'home');
+        $this->render(['featuredPlayers' => $featuredPlayers, 'featuredTeams' => $featuredTeams, 'featuredTeam' => $featuredTeam], 'home');
     }
-    public function match() {
-        $this->render([], 'match');
+    public function match(int $id) {
+        $gamesManager = new GamesManager;
+        $playerManager = new PlayerManager;
+        $playerPerformanceManager = new PlayerPerformanceManager;
+
+        $player = $playerManager->findOne($id);
+        $player->setStats($playerPerformanceManager->findAll($player->getId()));
+
+        $this->render([$gamesManager->findOne($id)], 'match');
     }
     public function matchs() {
         $gamesManager = new GamesManager;
