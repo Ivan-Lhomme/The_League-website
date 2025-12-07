@@ -11,7 +11,7 @@
                 <div class="players">
                     <div class="player logo-block">
                         <?php $logo = $data["featuredTeam"]->getLogo(); ?>
-                        <img class="team-logo" src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
+                        <img class="team-logo" src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>" loading="lazy">
                     </div>
 
                     <?php $first = true; /* Flag to add overlay only on the first player image */ ?>
@@ -25,7 +25,7 @@
                                 </div>
                                 <?php $first = false; ?>
                             <?php endif; ?>
-                            <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
+                            <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>" loading="lazy">
                             <h3><?= $player->getNickName() ?></h3>
                         </div>
                     <?php endforeach; ?>
@@ -40,7 +40,7 @@
             <?php foreach ($data["featuredPlayers"] as $player) { ?>
                 <div class="<?= $player->getNickname() ?>">
                     <?php $image = $player->getImage(); ?>
-                    <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
+                    <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>" loading="lazy">
                     <h3><?= $player->getNickname() ?></h3>
                     <p><?= $player->getTeam()["name"] ?></p>
                 </div>
@@ -59,13 +59,13 @@
                     $team = $data["lastGame"]->getTeam_1();
                     $logo = $team->getLogo();
                 ?>
-                <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>" <?php if ($team->getId() === $data["lastGame"]->getWinner()) { ?> class="winner" <?php } ?>>
+                <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>" <?php if ($team->getId() === $data["lastGame"]->getWinner()) { ?> class="winner" <?php } ?> loading="lazy">
 
                 <?php
                     $team = $data["lastGame"]->getTeam_2();
                     $logo = $team->getLogo();
                 ?>
-                <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>" <?php if ($team->getId() === $data["lastGame"]->getWinner()) { ?> class="winner" <?php } ?>>
+                <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>" <?php if ($team->getId() === $data["lastGame"]->getWinner()) { ?> class="winner" <?php } ?> loading="lazy">
             </div>
         </div>
     </section>

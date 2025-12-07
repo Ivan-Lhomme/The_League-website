@@ -4,7 +4,7 @@
         <?php foreach($data as $player) { 
             $image = $player->getImage() ?>
             <div>
-                <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
+                <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>" loading="lazy">
                 <p class="player-name"><?= $player->getNickname() ?></p>
                 <p class="team-name"><?= $player->getTeam()["name"] ?></p>
                 <button onclick="window.location.href = '?route=player&playerId=<?= $player->getId() ?>';">DECOUVREZ <?= $player->getNickname() ?></button>

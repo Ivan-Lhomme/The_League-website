@@ -9,7 +9,7 @@
 
     <section id="top">
         <h2><?= $player->getNickname() ?></h2>
-        <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
+        <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>" loading="lazy">
     </section>
 
     <section id="table">
@@ -59,7 +59,7 @@
                 if ($teammate->getId() !== $player->getId()) {
                     $image = $teammate->getImage() ?>
                     <div>
-                        <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>">
+                        <img src="<?= $image->getUrl() ?>" alt="<?= $image->getAlt() ?>" loading="lazy">
                         <p><?= $teammate->getNickname() ?></p>
                         <button onclick="window.location.href = '?route=player&playerId=<?= $teammate->getId() ?>';">DECOUVREZ <?= $teammate->getNickname() ?></button>
                     </div>

@@ -5,7 +5,7 @@
             $logo = $team->getLogo(); ?>
             
             <div>
-                <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
+                <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>" loading="lazy">
                 <p class="team-name"><?= $team->getName() ?></p>
                 <p class="team-desc"><?= $team->getDescription() ?></p>
                 <button onclick="window.location.href = '?route=team&teamId=<?= $team->getId() ?>';">DECOUVREZ <?= $team->getName() ?></button>
