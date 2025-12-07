@@ -2,7 +2,7 @@
     <section>
         <?php $game = $data["game"]; ?>
         <h1><?= $game->getName() ?></h1>
-        <p><?= $game->getDate()->format("d-m-Y") ?></p>
+        <p><?= $game->getDate()->format("d/m/Y") ?></p>
 
         <?php
         $team1 = $game->getTeam_1();
@@ -15,6 +15,7 @@
             <img src="<?= $logo1->getUrl() ?>" alt="<?= $logo1->getAlt() ?>" loading="lazy">
             <img src="<?= $logo2->getUrl() ?>" alt="<?= $logo2->getAlt() ?>" loading="lazy">
         </div>
+        <h1 class = "perf">Les Performances</h1>
         <!-- Found table class on https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table -->
         <table class="tableau-des-joueurs">
             <thead>
@@ -28,31 +29,31 @@
             <tbody>
 
 
-                <?php foreach ($data["team1Players"] as $joueur) : ?>
+                <?php foreach ($data["team1Players"] as $joueur) { ?>
                     <?php
                     $performances = $joueur->getStats();
                     $playerPerf = $performances[0] ?? null;
                     ?>
-                    <tr class="team1">
-                        <td><?= $joueur->getNickname() ?></td>
-                        <td><?= $joueur->getTeam()["name"] ?></td>
+                    <tr class="teams">
+                        <td class = "players"><?= $joueur->getNickname() ?></td>
+                        <td class = "team"><?= $joueur->getTeam()["name"] ?></td>
                         <td><?= $playerPerf ? $playerPerf->getPoints() : 'N/A' /*found with ai, asked it why the performances werent appearing */?></td>
                         <td><?= $playerPerf ? $playerPerf->getAssists() : 'N/A' ?></td>
                     </tr>
-                <?php endforeach; ?>
+                <?php } ?>
 
-                <?php foreach ($data["team2Players"] as $joueur) : ?>
+                <?php foreach ($data["team2Players"] as $joueur) { ?>
                     <?php
                     $performances = $joueur->getStats();
                     $playerPerf = $performances[0] ?? null;
                     ?>
-                    <tr class="team2">
-                        <td><?= $joueur->getNickname() ?></td>
-                        <td><?= $joueur->getTeam()["name"] ?></td>
+                    <tr class="teams">
+                        <td class = "players"><?= $joueur->getNickname() ?></td>
+                        <td class = "team"><?= $joueur->getTeam()["name"] ?></td>
                         <td><?= $playerPerf ? $playerPerf->getPoints() : 'N/A' ?></td>
                         <td><?= $playerPerf ? $playerPerf->getAssists() : 'N/A' ?></td>
                     </tr>
-                <?php endforeach; ?>
+                <?php } ?>
             </tbody>
         </table>
     </section>
