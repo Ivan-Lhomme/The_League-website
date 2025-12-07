@@ -15,7 +15,7 @@ class Router{
             } else if ($get["route"] === "player") {
                 $page->player($get["playerId"]);
             } else if ($get["route"] === "match") {
-                $page->match();
+                $page->match($get['matchID']);
             }
         } else {
             $page->home();
