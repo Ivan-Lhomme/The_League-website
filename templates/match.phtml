@@ -1,42 +1,59 @@
 <main>
-
     <section>
+        <?php $game = $data["game"]; ?>
         <h1><?= $game->getName() ?></h1>
-        <p> <?=$game->getDate()->format("d-m-Y")?></p>
-        <?php
-            $team1 = $game->getTeam_1();
-            $logo1 = $team1->getLogo();
-            $team2 = $game->getTeam_2();
-            $logo2 = $team2->getLogo(); ?>
+        <p><?= $game->getDate()->format("d-m-Y") ?></p>
 
-        <div class = "logos">
+        <?php
+        $team1 = $game->getTeam_1();
+        $logo1 = $team1->getLogo();
+        $team2 = $game->getTeam_2();
+        $logo2 = $team2->getLogo();
+        ?>
+
+        <div class="logos">
             <img src="<?= $logo1->getUrl() ?>" alt="<?= $logo1->getAlt() ?>">
             <img src="<?= $logo2->getUrl() ?>" alt="<?= $logo2->getAlt() ?>">
         </div>
-        <div class = "tableau-des-joueurs">
-            <div class = "top">
-                <p>Player</p>
-                <p>Team</p>
-                <p>Points</p>
-                <p>Assists</p>
-            </div>
-            <div class = "team1">
-                <?php foreach ($team1->getPlayers() as $joueur) { ?>
-                    <p><?= $player->getNickName() ?></p>
-                    <p><?= $player->getTeam()["name"] ?></p>
-                    <p><?= $playerPerf->getPoints() ?></p>
-                    <p><?= $playerPerf->getAssists() ?></p>
-                <?php } ?>
-            </div>
+        <!-- Found table class on https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table -->
+        <table class="tableau-des-joueurs">
+            <thead>
+            <tr class="top">
+                <th>Player</th>
+                <th>Team</th>
+                <th>Points</th>
+                <th>Assists</th>
+            </tr>
+            </thead>
+            <tbody>
 
-            <div class = "team2">
-                <?php foreach ($team2->getPlayers() as $joueur) { ?>
-                    <p><?= $player->getNickName() ?></p>
-                    <p><?= $player->getTeam()["name"] ?></p>
-                    <p><?= $playerPerf->getPoints() ?></p>
-                    <p><?= $playerPerf->getAssists() ?></p>
-                <?php } ?>
-            </div>
-        </div>
+
+                <?php foreach ($data["team1Players"] as $joueur) : ?>
+                    <?php
+                    $performances = $joueur->getStats();
+                    $playerPerf = $performances[0] ?? null;
+                    ?>
+                    <tr class="team1">
+                        <td><?= $joueur->getNickname() ?></td>
+                        <td><?= $joueur->getTeam()["name"] ?></td>
+                        <td><?= $playerPerf ? $playerPerf->getPoints() : 'N/A' /*found with ai, asked it why the performances werent appearing */?></td>
+                        <td><?= $playerPerf ? $playerPerf->getAssists() : 'N/A' ?></td>
+                    </tr>
+                <?php endforeach; ?>
+
+                <?php foreach ($data["team2Players"] as $joueur) : ?>
+                    <?php
+                    $performances = $joueur->getStats();
+                    $playerPerf = $performances[0] ?? null;
+                    ?>
+                    <tr class="team2">
+                        <td><?= $joueur->getNickname() ?></td>
+                        <td><?= $joueur->getTeam()["name"] ?></td>
+                        <td><?= $playerPerf ? $playerPerf->getPoints() : 'N/A' ?></td>
+                        <td><?= $playerPerf ? $playerPerf->getAssists() : 'N/A' ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </section>
 </main>
