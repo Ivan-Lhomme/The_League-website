@@ -1,7 +1,6 @@
 <header>
     <h1>Tout sur la League</h1>
     <p>Les players, les teams et l'actu des matchs</p>
-    <img src="../images/home_background_league.png" alt="home background" >
 </header>
 
 <main>
@@ -56,11 +55,17 @@
             <p><?= $data["lastGame"]->getDate()->format("d/m/Y") ?></p>
 
             <div>
-                <?php $logo = $data["lastGame"]->getTeam_1()->getLogo() ?>
-                <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
+                <?php
+                    $team = $data["lastGame"]->getTeam_1();
+                    $logo = $team->getLogo();
+                ?>
+                <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>" <?php if ($team->getId() === $data["lastGame"]->getWinner()) { ?> class="winner" <?php } ?>>
 
-                <?php $logo = $data["lastGame"]->getTeam_2()->getLogo() ?>
-                <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>">
+                <?php
+                    $team = $data["lastGame"]->getTeam_2();
+                    $logo = $team->getLogo();
+                ?>
+                <img src="<?= $logo->getUrl() ?>" alt="<?= $logo->getAlt() ?>" <?php if ($team->getId() === $data["lastGame"]->getWinner()) { ?> class="winner" <?php } ?>>
             </div>
         </div>
     </section>
