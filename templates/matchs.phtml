@@ -7,7 +7,7 @@
             $team2 = $game->getTeam_2();
             $logo2 = $team2->getLogo(); ?>
             <div class="match">                 
-                <p> <?=$game->getName() ?> </p>
+                <h2> <?=$game->getName() ?> </h2>
                 <p> <?=$game->getDate()->format("d-m-Y")?></p>
                 <div>
                     <img src="<?= $logo1->getUrl() ?>" alt="<?= $logo1->getAlt() ?>" loading="lazy">
