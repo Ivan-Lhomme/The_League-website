@@ -165,14 +165,17 @@ header p {
     font-size: 1vw;
 }
 #teams > div{
+    align-items: center;
     display: flex;
     justify-content: space-between;
-    width: 95%;
-    gap: 1%;
+    width: 90%;
+    gap: 2%;
 }
 #teams > div > img{
+    width: 25vw;
+    height: auto;
     border: 1px solid #1c2541;
-    padding: 1.5%;
+    padding: 1%;
 }
 #teams > div > .winner{
     border-color: #509d77;
