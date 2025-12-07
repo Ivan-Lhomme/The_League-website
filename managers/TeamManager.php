@@ -11,7 +11,7 @@ class TeamManager extends AbstractManager{
         $mediaManager = new MediaManager;
         $playerManager = new PlayerManager;
 
-        $image = $mediaManager->findOne($team_data["id"]);
+        $image = $mediaManager->findOne($team_data["logo"]);
         $team = new Team($team_data["name"], $team_data["description"], $image, $playerManager->findTeam($team_data["id"]));
         $team->setId($team_data["id"]);
 
@@ -27,7 +27,7 @@ class TeamManager extends AbstractManager{
         $playerManager = new PlayerManager;
 
         foreach ($teams_data as $team_data) {
-            $image = $mediaManager->findOne($team_data["id"]);
+            $image = $mediaManager->findOne($team_data["logo"]);
             $t = new Team($team_data["name"], $team_data["description"], $image, $playerManager->findTeam($team_data["id"]));
             $t->setId($team_data["id"]);
             $teams[] = $t;
